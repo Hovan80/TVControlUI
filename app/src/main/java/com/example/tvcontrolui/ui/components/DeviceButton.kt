@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
@@ -26,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.tvcontrolui.R
+import com.example.tvcontrolui.ui.theme.MyStyle
 
 
 @Composable
@@ -49,23 +52,23 @@ fun DeviceButton(title: String = "") {
             ) {
                 Box(
                     modifier = Modifier
-                        .clickable {  } //Необходимо вставить фунцию для вызова контекстного меню
-                        .clip(CircleShape)
+                        .offset(x = 14.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .clickable {} //Необходимо вставить фунцию для вызова контекстного меню
                 ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_menu_dots),
                             contentDescription = null,
-                            tint = Color.Unspecified
+                            tint = Color.Unspecified,
                         )
                     }
                 }
-            Spacer(modifier = Modifier.height(4.dp))
-            Image(
+            Image( modifier = Modifier.size(178.dp,115.dp ),
                 painter = painterResource(id = R.drawable.ic_interior_tv),
                 contentDescription = null
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = title)
+            Text(text = title, style = MyStyle.text_P)
         }
     }
 }

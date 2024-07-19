@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.tvcontrolui.R
+import com.example.tvcontrolui.ui.components.DeviceButton
 import com.example.tvcontrolui.ui.components.NavigationButton
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,30 +40,21 @@ fun SettingsPage(){
     ) { innerPadding ->
         Column(modifier = Modifier
             .padding(innerPadding)
+            .padding(20.dp)
             .fillMaxHeight()
             .selectableGroup(),
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
             NavigationButton(
-                image = painterResource(id = R.drawable.baseline_live_help_24),
+                image = painterResource(id = R.drawable.ic_support),
                 title = "Обратная связь",
                 description = "Вы можете оценить наше приложение, а также сообщить об ошибках"
             )
             NavigationButton(
-                image = painterResource(id = R.drawable.baseline_language_24),
+                image = painterResource(id = R.drawable.ic_earth),
                 title = "Язык приложения",
                 description = "Русский" // По идее данные о языке берутся из глобал стейт
             )
-            NavigationButton(
-                image = painterResource(id = R.drawable.baseline_share_24),
-                title = "Поделиться",
-                description = "Расскажите друзьям и знакомым о нашем приложении"
-            )
-            NavigationButton(
-                image = painterResource(id = R.drawable.baseline_lock_outline_24),
-                title = "Политика конфиденциальности"
-            )
-
         }
     }
 }

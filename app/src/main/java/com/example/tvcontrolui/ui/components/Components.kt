@@ -27,27 +27,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.tvcontrolui.R
+import com.example.tvcontrolui.ui.theme.MyStyle
 
 
 @Composable
-public fun CustomButton() {
+public fun CustomButton(modifier: Modifier = Modifier, onClick: () -> Unit, text: String) {
     Button(
-        onClick = {},
+        onClick = onClick,
         shape = RoundedCornerShape(16.dp),
         contentPadding = PaddingValues(16.dp),
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 48.dp)
             .width(420.dp),
         colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.tertiary)
     )
     {
         Text(
-            text = "Начать",
+            text = text,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.bodyLarge,
-            fontFamily = MaterialTheme.typography.bodyLarge.fontFamily,
-            fontWeight = FontWeight.Medium,
-            fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+            style = MyStyle.text_H2,
             color = MaterialTheme.colorScheme.background
         )
 
@@ -55,13 +53,13 @@ public fun CustomButton() {
 }
 
 @Composable
-fun NavAllIcons(title: String) {
+fun NavAllIcons(modifier: Modifier = Modifier, onClick: () -> Unit, title: String) {
     Row (
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Button(
-            onClick = {},
+            onClick = onClick,
             contentPadding = PaddingValues(2.dp),
             modifier = Modifier
                 .width(40.dp)
@@ -79,12 +77,9 @@ fun NavAllIcons(title: String) {
         Text( modifier = Modifier.padding(top = 5.dp),
             text = title,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleLarge,
-            fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = MaterialTheme.typography.titleLarge.fontSize
+            style = MyStyle.text_H1
         )
-        Button(onClick = {},
+        Button(onClick = onClick,
             contentPadding = PaddingValues(2.dp),
             modifier = Modifier
                 .width(40.dp)
@@ -102,7 +97,7 @@ fun NavAllIcons(title: String) {
 }
 
 @Composable
-fun NavSupportAndTitle(title: String) {
+fun NavSupportAndTitle(modifier: Modifier = Modifier, onClick: () -> Unit, title: String) {
     Row (
         modifier = Modifier.fillMaxSize(),
         horizontalArrangement = Arrangement.SpaceBetween
@@ -110,12 +105,9 @@ fun NavSupportAndTitle(title: String) {
         Text( modifier = Modifier.padding(top = 5.dp),
             text = title,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleLarge,
-            fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = MaterialTheme.typography.titleLarge.fontSize
+            style = MyStyle.text_H1
         )
-        Button(onClick = {},
+        Button(onClick = onClick,
             contentPadding = PaddingValues(2.dp),
             modifier = Modifier
                 .width(40.dp)
@@ -133,12 +125,12 @@ fun NavSupportAndTitle(title: String) {
 }
 
 @Composable
-fun NavBackAndTitle(title: String) {
+fun NavBackAndTitle(modifier: Modifier = Modifier, onClick: () -> Unit, title: String) {
     Row (
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         Button(
-            onClick = {},
+            onClick = onClick,
             contentPadding = PaddingValues(2.dp),
             modifier = Modifier
                 .width(40.dp)
@@ -156,10 +148,7 @@ fun NavBackAndTitle(title: String) {
         Text( modifier = Modifier.padding(start = 24.dp, top = 5.dp),
             text = title,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleLarge,
-            fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = MaterialTheme.typography.titleLarge.fontSize
+            style = MyStyle.text_H1
         )
 
     }
@@ -174,22 +163,19 @@ fun NavTitleOnly(title: String) {
         Text( modifier = Modifier.padding(top = 5.dp),
             text = title,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleLarge,
-            fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = MaterialTheme.typography.titleLarge.fontSize
+            style = MyStyle.text_H1
         )
     }
 }
 
 @Composable
-fun NavBack() {
+fun NavBack(modifier: Modifier = Modifier, onClick: () -> Unit) {
     Row (
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         horizontalArrangement = Arrangement.Start
     ) {
         Button(
-            onClick = {},
+            onClick = onClick,
             contentPadding = PaddingValues(2.dp),
             modifier = Modifier
                 .width(40.dp)
@@ -212,12 +198,12 @@ fun NumberedListItem(index: Int, text: String) {
     Row(modifier = Modifier.padding(bottom = 8.dp)) {
         Text(
             text = "${index + 1}. ",
-            style = MaterialTheme.typography.bodyMedium,
+            style = MyStyle.text_P,
             color = MaterialTheme.colorScheme.scrim
         )
         Text(
             text = text,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MyStyle.text_P,
             color = MaterialTheme.colorScheme.scrim
         )
     }
@@ -237,10 +223,9 @@ fun Recommendations() {
         ) {
             Text(
                 text = "Убедитесь, что:",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold,
+                style = MyStyle.text_H3,
                 color = MaterialTheme.colorScheme.scrim,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 12.dp)
             )
 
             NumberedListItem(0, "Ваш смартфон и ТВ подключены к одной сети Wi-Fi")
